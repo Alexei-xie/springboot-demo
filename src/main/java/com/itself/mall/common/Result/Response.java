@@ -1,4 +1,4 @@
-package com.itself.mall.common.Result;
+package com.itself.mall.common.result;
 
 import com.itself.mall.common.exception.ReturnCode;
 
