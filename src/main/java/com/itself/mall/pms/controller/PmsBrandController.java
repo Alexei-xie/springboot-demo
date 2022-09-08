@@ -1,6 +1,6 @@
 package com.itself.mall.pms.controller;
 
-import com.itself.mall.common.Result.Response;
+import com.itself.mall.common.result.Response;
 import com.itself.mall.common.page.PageModel;
 import com.itself.mall.pms.dto.PmsBrandDTO;
 import com.itself.mall.pms.request.QueryPmsRequest;

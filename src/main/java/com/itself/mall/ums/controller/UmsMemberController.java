@@ -1,6 +1,6 @@
 package com.itself.mall.ums.controller;
 
-import com.itself.mall.common.Result.Response;
+import com.itself.mall.common.result.Response;
 import com.itself.mall.ums.service.UmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
