@@ -1,5 +1,6 @@
 package com.itself.mall.config;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
@@ -35,8 +36,8 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.itself.mall"))   //为当前包下controller生成API文档
-                //.apis(RequestHandlerSelectors.withClassAnnotation(Api.class))   //为有@Api注解的Controller生成API文档
+                // .apis(RequestHandlerSelectors.basePackage("com.itself.mall"))   //为当前包下controller生成API文档
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))   //为有@Api注解的Controller生成API文档
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))   //为有@ApiOperation注解的方法生成API文档
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiModelProperty.class))    //为有@ApiModelProperty注解的方法生成API文档
                 .paths(PathSelectors.any())
@@ -49,9 +50,9 @@ public class Swagger2Config {
      */
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("mall简易电商后台系统")
-                .description("self-mall")
-                .contact(new Contact("小卫不是神","www.小卫不是神.com","x15237168213@163.com")) //创建人信息
+                .title("springboot-demo")
+                .description("springboot-demo")
+                .contact(new Contact("","","")) //创建人信息
                 .version("1.0")
                 .build();
     }
