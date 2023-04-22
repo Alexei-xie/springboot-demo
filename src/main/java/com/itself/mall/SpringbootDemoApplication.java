@@ -13,15 +13,5 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SpringbootDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootDemoApplication.class, args);
-        System.out.println("#*#*#*#*#*#*#*#*#*\n" +
-                            "      #*        #*\n" +
-                            "      #*        #*\n" +
-                            "      #*        #*\n" +
-                            "      #*        #*\n" +
-                            "      #*    #*  #*\n" +
-                            "      #*     #* #*\n" +
-                            "      #*          \n" +
-                            "      #*          \n" +
-                            "#*#*#*#*#*#*#*#*#*");
     }
 }
