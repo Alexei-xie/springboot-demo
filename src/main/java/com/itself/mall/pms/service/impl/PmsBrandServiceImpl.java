@@ -37,11 +37,11 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     @Override
     public PageModel<PmsBrandDTO> listPage(QueryPmsRequest request) {
         QueryWrapper<PmsBrandPO> wrapper = new QueryWrapper<>();
-        wrapper.in(!CollectionUtils.isEmpty(request.getIds()),"id",request.getIds());
-        wrapper.eq("deleted",request.getDeleted());
-        wrapper.eq(Strings.isNotBlank(request.getName()),"name",request.getName());
-        wrapper.eq(Objects.nonNull(request.getShowStatus()),"show_status",request.getShowStatus());
-        wrapper.eq(Objects.nonNull(request.getSort()),"sort",request.getSort());
+        wrapper.lambda().eq(PmsBrandPO::getDeleted,request.getDeleted())
+                        .eq(Strings.isNotBlank(request.getName()),PmsBrandPO::getName,request.getName())
+                                .eq(null !=request.getShowStatus(),PmsBrandPO::getShowStatus,request.getShowStatus())
+                                        .eq(null != request.getSort(),PmsBrandPO::getSort,request.getSort())
+                                                .in(!CollectionUtils.isEmpty(request.getIds()),PmsBrandPO::getId,request.getIds());
         if (!request.getNeedTotal()){ //需要进行分页
             PageHelper.startPage(request.getPageNum(),request.getPageSize());
         }
