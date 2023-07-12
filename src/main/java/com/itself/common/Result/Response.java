@@ -37,6 +37,9 @@ public class Response<T> {
     public static Response<Void> error(Integer code,String message, Object data){
         return new Response(code,message,data);
     }
+    public static Response<Void> error(String message){
+        return new Response(ReturnCode.UNDEFINED_ERROR.getCode(),message);
+    }
 
     public static <T>  Response<T> success(T data){
         return new Response<T>(ReturnCode.SUCCESS.getCode(),"操作成功",data);

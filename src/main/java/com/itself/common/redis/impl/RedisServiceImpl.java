@@ -6,6 +6,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,8 +18,16 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class RedisServiceImpl implements RedisService {
 
+    /**
+     * 如果使用@Resource注解的话此处不能使用redisTemplate命名，不然会找不到bean，因为该注解是通过名称进行注入
+     */
     @Resource
-    private StringRedisTemplate stringRedisTemplate; //如果使用@Resource注解的话此处不能使用redisTemplate命名，不然会找不到bean，因为该注解是通过名称进行注入
+    private StringRedisTemplate stringRedisTemplate;
+
+    /**
+     * 创建一个线程数量为5的定时线程池
+     */
+    private static final ScheduledExecutorService threadPool = Executors.newScheduledThreadPool(20);
 
     @Override
     public void set(String key, String value) {
@@ -50,5 +60,12 @@ public class RedisServiceImpl implements RedisService {
         Long increment = stringRedisTemplate.opsForValue().increment(key, delta);
         log.info("自增成功，自增后的key数量为：{}",increment);
         return increment;
+    }
+
+    @Override
+    public void DelayDoubleDel(String key) {
+        stringRedisTemplate.delete(key);
+        //10秒后再删一次
+        threadPool.schedule(()->stringRedisTemplate.delete(key),10,TimeUnit.SECONDS);
     }
 }

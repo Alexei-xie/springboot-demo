@@ -32,4 +32,9 @@ public interface RedisService {
      * 自增操作
      */
     Long increment(String key,Long delta);
+
+    /**
+     * 延迟双删
+     */
+    void DelayDoubleDel(String key);
 }
