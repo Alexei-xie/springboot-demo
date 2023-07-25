@@ -1,5 +1,6 @@
 package com.itself.common.annotation;
 
+import com.itself.common.exception.GlobalExceptionHandler;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -10,7 +11,7 @@ import java.lang.annotation.*;
  * @Author xxw
  * @Date 2023/07/12
  */
-@Import(GlobalExceptionAnnotation.class)//导入配置类
+@Import(GlobalExceptionHandler.class)//导入配置类
 @Documented
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

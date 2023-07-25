@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  */
 @Slf4j
 @RestControllerAdvice //注入spring,进行通知
-public class GlobalExceptionHandle {
+public class GlobalExceptionHandler {
 
     /**
      * 处理所有未知异常
