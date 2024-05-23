@@ -30,11 +30,12 @@ import java.util.stream.Collectors;
  */
 @Configuration
 @EnableOpenApi
-public class Swagger2Config {
+public class SwaggerConfig {
     @Bean
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .groupName("swagger")
                 .select()
                 // .apis(RequestHandlerSelectors.basePackage("com.itself.mall"))   //为当前包下controller生成API文档
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))   //为有@Api注解的Controller生成API文档
@@ -50,9 +51,9 @@ public class Swagger2Config {
      */
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("springboot-demo")
-                .description("springboot-demo")
-                .contact(new Contact("","","")) //创建人信息
+                .title("Springboot-Demo")
+                .description("Swagger-Apis")
+                .contact(new Contact("duJi","https://github.com/Alexei-xie","Alexei_Xie@163.com")) //创建人信息
                 .version("1.0")
                 .build();
     }

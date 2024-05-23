@@ -24,7 +24,8 @@ public class SwaggerOutPutConfig implements ApplicationListener<WebServerInitial
         try {
             InetAddress inetAddress = Inet4Address.getLocalHost();
             int serverPort = event.getWebServer().getPort();
-            log.info("项目启动启动成功！接口文档地址: http://"+inetAddress.getHostAddress()+":"+serverPort+"/swagger-ui/index.html");
+            log.info("项目启动成功！Swagger 接口文档地址: http://"+inetAddress.getHostAddress()+":"+serverPort+"/swagger-ui/index.html");
+            log.info("项目启动成功！Knife4j 接口文档地址: http://"+inetAddress.getHostAddress()+":"+serverPort+"/doc.html");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
